@@ -1,0 +1,12 @@
+---
+- name: Get GCP Services Status
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Get GCP Services Status
+      command: gcloud services list --project ansible4devops      
+      register: gcp_services_output
+
+    - name: Display GCP Services Status
+      debug:
+        var: gcp_services_output.stdout_lines
