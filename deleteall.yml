@@ -1,0 +1,39 @@
+---
+- name: Delete GCP Resources
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Delete GCP Disk
+      gcp_compute_disk:
+        name: disk-instance
+        zone: us-central1-a
+        project: ansible4devops
+        auth_kind: serviceaccount
+        service_account_file: "/home/mailbox4prakhar/ansible4devops-6d288f4317cf.json"
+        state: absent
+
+    - name: Delete GCP Network
+      gcp_compute_network:
+        name: network-instance
+        project: ansible4devops
+        auth_kind: serviceaccount
+        service_account_file: "/home/mailbox4prakhar/ansible4devops-6d288f4317cf.json"
+        state: absent
+
+    - name: Delete GCP Address
+      gcp_compute_address:
+        name: address-instance
+        region: us-central1
+        project: ansible4devops
+        auth_kind: serviceaccount
+        service_account_file: "/home/mailbox4prakhar/ansible4devops-6d288f4317cf.json"
+        state: absent
+
+    - name: Delete GCP Instance
+      gcp_compute_instance:
+        name: vm-instance
+        zone: us-central1-a
+        project: ansible4devops
+        auth_kind: serviceaccount
+        service_account_file: "/home/mailbox4prakhar/ansible4devops-6d288f4317cf.json"
+        state: absent
