@@ -1,0 +1,10 @@
+- name: create a bucket
+   hosts: localhost
+   tasks:
+   - name: Storage bucket
+     google.cloud.gcp_storage_bucket:
+       name: ansible-storage-module
+       project: Ansible4devops
+       auth_kind: serviceaccount
+       service_account_file: "/home/mailbox4prakhar/ansible4devops-6d288f4317cf.json"
+       state: present
